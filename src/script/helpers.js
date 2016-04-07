@@ -342,7 +342,7 @@ window.Comp = {
             self.reRender(data, $('.packery-container'));
             return Helper.docH = $(document).height();
           }).fail(function (jqXHR, textStatus, errorThrown) {
-            console.info(jqXHR, textStatus, errorThrown);
+            console.log(jqXHR, textStatus, errorThrown);
           });
         }
       }, 100);

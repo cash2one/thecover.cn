@@ -534,11 +534,11 @@ p {
     transition: bottom 300ms ease-in;
 }
 .express-news.go-with-parent {
-    position: absolute;
+    position: absolute !important;
     bottom: 0px !important;
     right: 0px !important;
-    left: unset !important;
-    top: unset !important;
+    left: auto !important;
+    top: auto !important;
 }
 .express-news-date,
 .express-news-scroll-area ul {
@@ -550,12 +550,6 @@ p {
 .express-news.hidden,
 .packery-container.hidden {
     visibility: hidden
-}
-.express_news.with-wrapper {
-    position: absolute!important;
-    top: auto!important;
-    bottom: 0!important;
-    right: 0!important
 }
 .express-news:after {
     display: table;
