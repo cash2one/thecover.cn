@@ -34,11 +34,7 @@ $(document).ready(function () {
   //搜索结果页
   if (Helper.atPage('search-results')) {
     console.log('@搜索结果页');
-    //Comp.packery.init($('.packery-container'), {
-    //  'col': 4
-    //});
     Comp.packery.init($('.packery-container'));
-
     Comp.scroll_and_load.init($('body'), {
       'API': CONFIG.API.SEARCH,
       'can_scroll_time': 3

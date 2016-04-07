@@ -22,10 +22,10 @@ window.Helper = {
   },
   'update_dimensions': function () {
     return {
-      'wW' : this.wW = this.$window.width(),
-      'wH' : this.wH = this.$window.height(),
-      'docH' : this.docH = $(document).height(),
-      'flag_footer_top' : this.flag_footer_top = $('#footer_flag').offset().top
+      'wW': this.wW = this.$window.width(),
+      'wH': this.wH = this.$window.height(),
+      'docH': this.docH = $(document).height(),
+      'flag_footer_top': this.flag_footer_top = $('#footer_flag').offset().top
     }
   },
   'Timer_Scroll_0': true,
@@ -57,7 +57,7 @@ window.Helper = {
     var arr = localStorage.getItem('the_cover').split('|');
     var new_arr = [];
     $.each(arr, function (idx, ele) {
-      if(!ele.match(inValid)) {
+      if (!ele.match(inValid)) {
         new_arr.push(ele);
       }
     });
@@ -67,7 +67,7 @@ window.Helper = {
     if (this.getSearchHistory()) {
       var ori_arr = this.getSearchHistory();
       if ($.inArray(entry, ori_arr) !== -1) {
-        console.log(entry , 'in Array ',ori_arr);
+        console.log(entry, 'in Array ', ori_arr);
         return false;
       }
       ori_arr.push(entry);
@@ -80,7 +80,7 @@ window.Helper = {
     var self = this;
     self.$window.on('resize', function () {
       self.update_dimensions();
-    })
+    });
   }
 };
 window.Comp = {
@@ -92,18 +92,18 @@ window.Comp = {
         return false;
       }
       var conf = config || {
-        loop: true,
-        paginationClickable: true,
-        autoplay: 4000,
-        speed: 500,
-        autoplayDisableOnInteraction: true,
-        pagination: $container.find('.swiper-pagination'),
-        paginationClickable: true,
-        onInit: function (swiper) {
-          $container.removeClass('hidden');
-        }
-      };
-      var $slider = new Swiper ('#banner_slider_container', conf);
+            loop: true,
+            paginationClickable: true,
+            autoplay: 4000,
+            speed: 500,
+            autoplayDisableOnInteraction: true,
+            pagination: $container.find('.swiper-pagination'),
+            paginationClickable: true,
+            onInit: function (swiper) {
+              $container.removeClass('hidden');
+            }
+          };
+      var $slider = new Swiper('#banner_slider_container', conf);
       $container.data("initialized", true);
       return this.bindEvents($slider);
     },
@@ -142,7 +142,7 @@ window.Comp = {
         evt.preventDefault();
         $container.find('.search-form').toggleClass('active');
         $container.find('.search-field').focus();
-        if($container.find('.search-form').hasClass('active')) {
+        if ($container.find('.search-form').hasClass('active')) {
           $container.find('.search-history li').addClass('hidden');
         }
         //Helper.$body.fadeOut();
@@ -153,8 +153,8 @@ window.Comp = {
   'express_news': {
     'init': function ($container) {
       var self = this;
-      var $express_news = $container.find('.express-news');
-      self.setPosition($container, true).done(function () {
+      var $express_news = $container.find('#express_news');
+      self.setPosition($container, $express_news).done(function () {
         $express_news.perfectScrollbar({
           wheelSpeed: 2,
           wheelPropagation: true,
@@ -164,38 +164,34 @@ window.Comp = {
           suppressScrollX: true
         });
         $express_news.removeClass('hidden');
-        return self.bindEvents($container);
+        return self.bindEvents($container, $express_news);
       });
     },
-    bindEvents: function ($container) {
+    bindEvents: function ($container, $express_news) {
       var self = this;
-      var $express_news = $container.find('.express-news');
-      //
-      //var $flag = $('#footer_flag');
-      //Helper.$window.on('scroll', function () {
-      //  if(Helper.isElementInViewport($flag) && !Helper.$body.hasClass('loading-more-cards')) {
-      //      $express_news.addClass('with-wrapper');
-      //  } else {
-      //    $express_news.removeClass('with-wrapper');
-      //  }
-      //});
+      Helper.$window.on('scroll', function () {
+        self.changeStyle($express_news);
+      });
       Helper.$window.on('resize', function () {
-        self.setPosition($container, false);
+        self.setPosition($container, $express_news);
         $express_news.perfectScrollbar('update');
       });
     },
-    setPosition: function ($container, fixed) {
-      var top = null;
-      if (Helper.$window.width() > 960) {
-        top = ($('.header-wrapper').height() + 12) + 'px';
+    changeStyle: function ($express_news) {
+      var $flag = $('#footer_flag');
+      var $footer = $('#footer');
+      if(Helper.isElementInViewport_Vertical($flag) && !$footer.hasClass('hidden')) {
+        $express_news.addClass('go-with-parent');
       } else {
-        top = '0px';
+        $express_news.removeClass('go-with-parent');
       }
-      var $express_news = $container.find('.express-news');
-      var right_pos = Helper.$window.width() - $container.offset().left - $container.width();
-      var height = Helper.$window.height() - $('.header-wrapper').height() - ($('#footer').height() + 40) - 12 - 1;
+    },
+    setPosition: function ($container, $express_news) {
+      var right_pos = Helper.wW - $container.offset().left - $container.width();
+      //var height = Helper.wH - $('.header-wrapper').height() - ($('#footer').height() + 40) - 12 - 1;
+      var height = Helper.wH - $('.header-wrapper').height() - 12*2 - 1;
       return $express_news.css({
-        'top': top,
+        'top': '82px',
         'right': right_pos + 'px',
         'height': height + 'px',
         'overflow': 'hidden'
@@ -208,10 +204,10 @@ window.Comp = {
       console.log('卡片初始化');
       if (config && config.col) {
         console.log('每行' + config.col + '个卡片');
-        var grid_width = ($container.width() - (config.col - 1) * 10) / config.col;
-        $container.find('.grid-item').each(function (inx, el) {
-          $(el).css('width', grid_width + 'px');
-        });
+        //var grid_width = ($container.width() - (config.col - 1) * 10) / config.col;
+        //$container.find('.grid-item').each(function (inx, el) {
+        //  $(el).css('width', grid_width + 'px');
+        //});
       }
       $container.packery({
         initLayout: false,
@@ -222,13 +218,11 @@ window.Comp = {
       return this.bindEvents($container);
     },
     'bindEvents': function ($container) {
+      var $express_news = $('#express_news');
       $container.on('layoutComplete', function () {
         console.log('layout is complete');
         $container.removeClass('hidden');
-        //Helper.flag_footer_top = $('#footer_flag').offset().top;
-      });
-      Helper.$window.on('resize', function () {
-        console.log();
+        $express_news.removeClass('with-parent');
       });
       $container.packery();
     }
@@ -317,6 +311,8 @@ window.Comp = {
         return false;
       }
       console.log('无穷滚动加载初始化');
+      var acquired_config = $container.find('#btn_load_more').data('counts');
+      console.log('acquired_config: ', acquired_config);
       var $btn_load_more = $container.find('#btn_load_more').data('counts', {
         'scrolled_time': 0,
         'can_scroll_time': config.can_scroll_time
@@ -325,6 +321,7 @@ window.Comp = {
     },
     'bindEvents': function ($btn_load_more, config) {
       var self = this;
+      var $express_news = $('#express_news');
       //页面滚动加载
       Helper.scroll_with_delay(0, 'load_more', function () {
         if (Helper.$body.hasClass('loading-more-cards')) {
@@ -335,20 +332,17 @@ window.Comp = {
           if ($btn_load_more.data('counts').scrolled_time++ === $btn_load_more.data('counts').can_scroll_time) {
             $btn_load_more.removeClass('hidden');
             $('#footer').removeClass('hidden');
-            $('#footer_flag').removeClass('hidden');
+            Comp.express_news.changeStyle($express_news);
             return Helper.$window.off('scroll.load_more');
           }
           Helper.$body.addClass('loading-more-cards');
-          //$express_news.removeClass('with-wrapper');
-          self.fetchMoreCard(config).done(function (data, textStatus, jqXHR) {
+          self.fetchMoreCard(config, $express_news).done(function (data, textStatus, jqXHR) {
             console.log('加载成功!');
             Helper.$body.removeClass('loading-more-cards');
             self.reRender(data, $('.packery-container'));
             return Helper.docH = $(document).height();
           }).fail(function (jqXHR, textStatus, errorThrown) {
             console.info(jqXHR, textStatus, errorThrown);
-          }).always(function () {
-            //Helper.flag_footer_top = $('#footer_flag').offset().top;
           });
         }
       }, 100);
@@ -360,20 +354,20 @@ window.Comp = {
         }
         $btn.text('加载中 ...').addClass('frozen');
         Helper.$body.addClass('loading-more-cards');
-        //$express_news.removeClass('with-wrapper');
-        self.fetchMoreCard(config).done(function (data, textStatus, jqXHR) {
+        self.fetchMoreCard(config, $express_news).done(function (data, textStatus, jqXHR) {
           console.log('加载成功!');
           Helper.$body.removeClass('loading-more-cards');
           $btn.text('加载更多').removeClass('frozen');
           return self.reRender(data, $('.packery-container'));
         }).fail(function (jqXHR, textStatus, errorThrown) {
           console.info(jqXHR, textStatus);
-        }).always(function () {});
+        });
       });
     },
-    'fetchMoreCard': function (config) {
+    'fetchMoreCard': function (config, $express_news) {
       var payload = $('.packery-container').data('params');
       console.log('fetchMoreCard() payload: ', payload);
+      $express_news.removeClass('go-with-parent');
       return Helper.getHtml(config.API, payload);
     },
     'reRender': function (data, $container) {
@@ -388,23 +382,26 @@ window.Comp = {
   },
   //页面悬浮物体
   'float_widgets': {
-    init: function ($container, config) {
+    init: function ($container) {
       console.log('页面悬浮物体初始化');
-      var $btn_back_to_top_container = $('#btn_back_to_top_container').css({
-        'left': ($container.find('.content-wrapper').offset().left + $container.find('.content-wrapper').width()) + 'px',
+      var $btn_back_to_top_container = $container.find('#btn_back_to_top_container').css({
         'bottom': ($('#footer').height() + 55 * 2) + 'px'
       });
+      this.setPosition(Helper.wW, $btn_back_to_top_container);
       var $share_icons = $('#share_icons').css({
         'left': ($container.find('.content-wrapper').offset().left - $('#share_icons').width()) + 'px'
       }).promise().done(function () {
-        console.log($(this));
         $(this).removeClass('hidden');
       });
-      return this.bindEvents($btn_back_to_top_container, config);
+      return this.bindEvents($btn_back_to_top_container);
     },
-    'bindEvents': function ($btn_back_to_top_container, config) {
+    'bindEvents': function ($btn_back_to_top_container) {
+      var self = this;
       Helper.$window.on('scroll', function () {
         $(this).scrollTop() > Helper.wH ? $btn_back_to_top_container.addClass('show') : $btn_back_to_top_container.removeClass('show');
+      });
+      Helper.$window.on('resize', function () {
+        self.setPosition(Helper.wW, $btn_back_to_top_container);
       });
       $btn_back_to_top_container.find('#btn_back_to_top').on('click', function () {
         return $('html, body').animate({
@@ -417,7 +414,29 @@ window.Comp = {
       $('#share_icons').find('#share_to_wechat').hover(function () {
         $(this).siblings('.panel-weixin').toggleClass('show');
       });
-
+    },
+    'setPosition': function (w, $btn) {
+      if(w > 1350) {
+        $btn.css({
+          'left': ($('.content-wrapper').offset().left + $('.content-wrapper').width()) + 'px',
+          'right': 'unset'
+        });
+      } else if(w > 1200) {
+        $btn.css({
+          'left': 'unset',
+          'right': '0px'
+        });
+      } else if(w > 1065) {
+        $btn.css({
+          'left': ($('.content-wrapper').offset().left + $('.content-wrapper').width()) + 'px',
+          'right': 'unset'
+        })
+      } else {
+        $btn.css({
+          'left': 'unset',
+          'right': '0px'
+        });
+      }
     }
   },
   //覆盖层
@@ -441,9 +460,9 @@ window.Comp = {
       this.showSection(location.hash, $container);
       return this.bindEvents($container);
     },
-    'bindEvents': function($container) {
+    'bindEvents': function ($container) {
       var self = this;
-      Helper.$window.on('hashchange', function() {
+      Helper.$window.on('hashchange', function () {
         self.showSection(location.hash, $container);
       });
       $container.find('.nav-li').on('click', function (evt) {
@@ -451,13 +470,13 @@ window.Comp = {
         self.showSection($(this).data('section'), $container);
       });
     },
-    'showSection': function(id, $container) {
+    'showSection': function (id, $container) {
       location.hash = id;
       $(id).siblings('.section').addClass('hidden');
       $(id).removeClass('hidden');
       Helper.$window.scrollTop(0)
       $container.find('.nav-li').each(function (idx, el) {
-        if($(el).data('section') === id) {
+        if ($(el).data('section') === id) {
           return $(el).addClass('active');
         } else {
           return $(el).removeClass('active');

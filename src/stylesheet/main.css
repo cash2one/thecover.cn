@@ -63,7 +63,6 @@ body {
     background-color: #f0f0f0;
     font-family: "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
     -webkit-font-smoothing: auto;
-    min-width: 1200px;
     -webkit-text-size-adjust: 100%
 }
 li,
@@ -206,12 +205,12 @@ p {
 .header-wrapper .logo a {
     display: block;
     height: 70px;
-    width: 131px;
+    width: 142px;
     overflow: hidden
 }
 .header-wrapper .logo img {
     position: relative;
-    top: 14px
+    top: 13px
 }
 .header-wrapper .channel-nav-li {
     float: left;
@@ -481,11 +480,11 @@ p {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    -webkit-transition: all 200ms ease-in;
-    -moz-transition: all 200ms ease-in;
-    -ms-transition: all 200ms ease-in;
-    -o-transition: all 200ms ease-in;
-    transition: all 200ms ease-in;
+    -webkit-transition: color 200ms ease-in, background-color 200ms ease-in;
+    -moz-transition: color 200ms ease-in, background-color 200ms ease-in;
+    -ms-transition: color 200ms ease-in, background-color 200ms ease-in;
+    -o-transition: color 200ms ease-in, background-color 200ms ease-in;
+    transition: color 200ms ease-in, background-color 200ms ease-in;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -520,13 +519,26 @@ p {
     background-image: url(img/bg_express.png);
     background-repeat: repeat-y;
     background-size: cover;
+    background-attachment: scroll;
     position: fixed;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 30%;
     border: 1px solid #E5E5E5;
-    visibility: visible
+    visibility: visible;
+    -webkit-transition: bottom 300ms ease-in;
+    -moz-transition: bottom 300ms ease-in;
+    -ms-transition: bottom 300ms ease-in;
+    -o-transition: bottom 300ms ease-in;
+    transition: bottom 300ms ease-in;
+}
+.express-news.go-with-parent {
+    position: absolute;
+    bottom: 0px !important;
+    right: 0px !important;
+    left: unset !important;
+    top: unset !important;
 }
 .express-news-date,
 .express-news-scroll-area ul {
@@ -658,10 +670,12 @@ p {
 .express-news-scroll-area li>div .meta .location {
     margin-left: 1em
 }
-.express-news-scroll-area li>div h3 {
+.express-news-scroll-area li >div * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+.express-news-scroll-area li>div h3 {
     font-size: 17px;
     line-height: 20px;
     text-align: left;
@@ -671,16 +685,19 @@ p {
 .express-news-scroll-area li>div .content {
     font-size: 13px;
     line-height: 16px;
-    padding: 10px 15px 15px;
+    /*padding: 10px 15px 15px;*/
+    padding: 0px 15px;
+    margin: 10px 0px 15px 0px;
     color: #474747;
-    height: 48px;
+    /*height: 48px;*/
+    max-height: 48px;
     overflow: hidden;
     word-wrap: break-word;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
+    max-height: 48px;
 }
 .express-news-scroll-area li>div img {
-    margin-top: 15px;
-    margin-bottom: 15px
+    margin: 10px 0px;
 }
 .editor-selected {
     -webkit-box-sizing: border-box;
@@ -690,7 +707,7 @@ p {
     width: 100%
 }
 .pagetype-index .editor-selected {
-    margin-bottom: 90px
+    margin-bottom: 100px
 }
 .editor-selected:after {
     display: table;
@@ -1821,7 +1838,6 @@ p {
     .express-news {
         margin-left: 8px
     }
-
     .each-slide-of-banner figcaption {
         height: 130px
     }
@@ -1846,17 +1862,25 @@ p {
         width: 60px;
     }
     .header-wrapper .interacting {
-        min-width: auto;
-    }
 
+    }
     .editor-selected,
     .pagetype-index #btn_load_more {
         width: 100%
     }
-    .express-news {
+    .express-news, .express-news.hidden {
         display: none
     }
     .editor-selected {
         float: none
+    }
+    .grid-item, .col-4 .grid-item {
+        width: 313.333px;
+    }
+    .grid-item .thumbnail-wrapper {
+        height: 232px;
+    }
+    .grid-item.grid-item--width2 {
+        width: 636.666px;
     }
 }
