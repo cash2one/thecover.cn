@@ -86,6 +86,19 @@ gulp.task('concat_css_dev', function () {
         stream: true
       }));
 });
+gulp.task('clean_my_css', function () {
+  return gulp.src(['src/stylesheet/main.css'])
+      .pipe(cleanCSS({
+        compatibility: 'ie8',
+        keepSpecialComments: '*',
+        keepBreaks: true
+      }))
+      .pipe(autoprefixer({
+        browsers: ['IE > 7', 'iOS > 7', 'Firefox > 20', '> 5%'],
+        cascade: false
+      }))
+      .pipe(gulp.dest('dist/'));
+});
 gulp.task('dev', ['concat_js_dev', 'concat_css_dev', 'copyHtml', 'copyImg', 'copySwf', 'copyJs'], function () {
   console.log('开发版编译完成');
 });

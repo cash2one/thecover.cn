@@ -20,6 +20,14 @@ window.Helper = {
     var rect = el.getBoundingClientRect();
     return (rect.top >= 0 && rect.bottom <= this.wH);
   },
+  'update_dimensions': function () {
+    return {
+      'wW' : this.wW = this.$window.width(),
+      'wH' : this.wH = this.$window.height(),
+      'docH' : this.docH = $(document).height(),
+      'flag_footer_top' : this.flag_footer_top = $('#footer_flag').offset().top
+    }
+  },
   'Timer_Scroll_0': true,
   'Timer_Scroll_1': true,
   'scroll_with_delay': function (timer_id, spec, callback, delay) {
@@ -32,28 +40,6 @@ window.Helper = {
         callback();
       }, delay);
     });
-  },
-  //'Timer_Scroll': true,
-  //'scroll_with_delay': function (spec, callback, delay) {
-  //  this.$window.on('scroll.' + spec, function () {
-  //    if (Helper.Timer_Scroll) {
-  //      window.clearTimeout(Helper.Timer_Scroll);
-  //    }
-  //    Helper.Timer_Scroll = window.setTimeout(function () {
-  //      callback();
-  //    }, delay);
-  //  });
-  //},
-  'getJson': function (api, payload) {
-    var d = $.Deferred();
-    $.getJSON(CONFIG.API_BASE_URL + api, payload, function (result) {
-      if (result.code === 0) {
-        d.resolve(result.data);
-      } else {
-        d.reject(result.code);
-      }
-    });
-    return d.promise();
   },
   'getHtml': function (api, payload) {
     return $.ajax({
@@ -81,7 +67,7 @@ window.Helper = {
     if (this.getSearchHistory()) {
       var ori_arr = this.getSearchHistory();
       if ($.inArray(entry, ori_arr) !== -1) {
-        //console.log(entry , 'in Array ',ori_arr);
+        console.log(entry , 'in Array ',ori_arr);
         return false;
       }
       ori_arr.push(entry);
@@ -89,20 +75,26 @@ window.Helper = {
     } else {
       localStorage.setItem('the_cover', '|' + entry);
     }
+  },
+  'bindEvents': function () {
+    var self = this;
+    self.$window.on('resize', function () {
+      self.update_dimensions();
+    })
   }
 };
 window.Comp = {
   //初始化slick幻灯片
   'slider': {
     init: function ($container, config) {
-      //console.log('幻灯片初始化');
+      console.log('幻灯片初始化');
       if ($container.data("initialized") === true) {
         return false;
       }
       var conf = config || {
         loop: true,
         paginationClickable: true,
-        autoplay: 3000000,
+        autoplay: 4000,
         speed: 500,
         autoplayDisableOnInteraction: true,
         pagination: $container.find('.swiper-pagination'),
@@ -119,7 +111,7 @@ window.Comp = {
   },
   'dotdotdot': {
     init: function () {
-      //console.log('点点点初始化');
+      console.log('点点点初始化');
       //$('.ellipsis').dotdotdot();
       $.each(['#banner_slider_container .each-slide-of-banner figcaption p.des',
         '.grid-item a.link-to-article .description-wrapper h2',
@@ -136,7 +128,7 @@ window.Comp = {
   //页头
   'page_header': {
     init: function ($container) {
-      //console.log('页头初始化');
+      console.log('页头初始化');
       var current_page_type = location.pathname.split('/')[1];
       $container.find('.top-nav>li').each(function (inx, el) {
         if ($(el).data('pagetype') === current_page_type) {
@@ -213,9 +205,9 @@ window.Comp = {
   //卡片部分
   'packery': {
     init: function ($container, config) {
-      //console.log('卡片初始化');
+      console.log('卡片初始化');
       if (config && config.col) {
-        //console.log('每行' + config.col + '个卡片');
+        console.log('每行' + config.col + '个卡片');
         var grid_width = ($container.width() - (config.col - 1) * 10) / config.col;
         $container.find('.grid-item').each(function (inx, el) {
           $(el).css('width', grid_width + 'px');
@@ -231,9 +223,12 @@ window.Comp = {
     },
     'bindEvents': function ($container) {
       $container.on('layoutComplete', function () {
-        //console.log('layout is complete');
+        console.log('layout is complete');
         $container.removeClass('hidden');
         //Helper.flag_footer_top = $('#footer_flag').offset().top;
+      });
+      Helper.$window.on('resize', function () {
+        console.log();
       });
       $container.packery();
     }
@@ -241,7 +236,7 @@ window.Comp = {
   //video player
   'video_player': {
     init: function ($container) {
-      //console.log('视频播放器初始化');
+      console.log('视频播放器初始化');
       videojs.options.flash.swf = "./video-js.swf";
       var video = $container.find('video').get(0);
       return this.bindEvents(videojs(video, {
@@ -253,11 +248,11 @@ window.Comp = {
       }));
     },
     'bindEvents': function (player) {
-      //console.log(player.userActive());
-      //console.log(player.userActive);
+      console.log(player.userActive());
+      console.log(player.userActive);
       setTimeout(function () {
         player.userActive(true);
-        //console.log(player.userActive());
+        console.log(player.userActive());
       }, 1500);
       //player.on('mouseout', function(){
       //  controlBar.addClass('vjs-fade-out');
@@ -270,7 +265,7 @@ window.Comp = {
   },
   'search_func': {
     init: function ($container) {
-      //console.log('搜索条初始化');
+      console.log('搜索条初始化');
       var $entrys = $('<ul class="search-history"></ul>');
       if (Helper.$html.hasClass('no-localstorage')) {
         return false;
@@ -321,7 +316,7 @@ window.Comp = {
       if (!$container.hasClass('scroll-and-load')) {
         return false;
       }
-      //console.log('无穷滚动加载初始化');
+      console.log('无穷滚动加载初始化');
       var $btn_load_more = $container.find('#btn_load_more').data('counts', {
         'scrolled_time': 0,
         'can_scroll_time': config.can_scroll_time
@@ -346,7 +341,7 @@ window.Comp = {
           Helper.$body.addClass('loading-more-cards');
           //$express_news.removeClass('with-wrapper');
           self.fetchMoreCard(config).done(function (data, textStatus, jqXHR) {
-            //console.log('加载成功!');
+            console.log('加载成功!');
             Helper.$body.removeClass('loading-more-cards');
             self.reRender(data, $('.packery-container'));
             return Helper.docH = $(document).height();
@@ -367,7 +362,7 @@ window.Comp = {
         Helper.$body.addClass('loading-more-cards');
         //$express_news.removeClass('with-wrapper');
         self.fetchMoreCard(config).done(function (data, textStatus, jqXHR) {
-          //console.log('加载成功!');
+          console.log('加载成功!');
           Helper.$body.removeClass('loading-more-cards');
           $btn.text('加载更多').removeClass('frozen');
           return self.reRender(data, $('.packery-container'));
@@ -378,11 +373,11 @@ window.Comp = {
     },
     'fetchMoreCard': function (config) {
       var payload = $('.packery-container').data('params');
-      //console.log('fetchMoreCard() payload: ', payload);
+      console.log('fetchMoreCard() payload: ', payload);
       return Helper.getHtml(config.API, payload);
     },
     'reRender': function (data, $container) {
-      //console.log('scroll_and_load.reRender()');
+      console.log('scroll_and_load.reRender()');
       var $html = $(data);
       $container.append($html).packery('appended', $html); //插件很挑剔,需要jQuery把HTML转换一下
       var $data_div = $container.find('#card_params');
@@ -394,7 +389,7 @@ window.Comp = {
   //页面悬浮物体
   'float_widgets': {
     init: function ($container, config) {
-      //console.log('页面悬浮物体初始化');
+      console.log('页面悬浮物体初始化');
       var $btn_back_to_top_container = $('#btn_back_to_top_container').css({
         'left': ($container.find('.content-wrapper').offset().left + $container.find('.content-wrapper').width()) + 'px',
         'bottom': ($('#footer').height() + 55 * 2) + 'px'
@@ -402,7 +397,7 @@ window.Comp = {
       var $share_icons = $('#share_icons').css({
         'left': ($container.find('.content-wrapper').offset().left - $('#share_icons').width()) + 'px'
       }).promise().done(function () {
-        ////console.log($(this));
+        console.log($(this));
         $(this).removeClass('hidden');
       });
       return this.bindEvents($btn_back_to_top_container, config);
@@ -428,7 +423,7 @@ window.Comp = {
   //覆盖层
   'fullscreen_cover_layer': {
     init: function ($body) {
-      //console.log('覆盖层初始化');
+      console.log('覆盖层初始化');
       this.bindEvents($body);
     },
     'bindEvents': function ($container) {
