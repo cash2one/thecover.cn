@@ -138,14 +138,19 @@ window.Comp = {
       this.bindEvents($container);
     },
     bindEvents: function ($container) {
+      var $form = $container.find('.search-form');
       $container.on('click', '.search-icon', function (evt) {
         evt.preventDefault();
-        $container.find('.search-form').toggleClass('active');
-        $container.find('.search-field').focus();
-        if ($container.find('.search-form').hasClass('active')) {
-          $container.find('.search-history li').addClass('hidden');
-        }
-        //Helper.$body.fadeOut();
+        $form.css({
+          'left': 180 + $('.top-nav').width() + 'px',
+          'margin-left': (20 - 100) + 'px'
+        }).promise().then(function () {
+          $form.toggleClass('active');
+          $form.find('.search-field').focus();
+          if ($form.hasClass('active')) {
+            $form.find('.search-history li').addClass('hidden');
+          }
+        });
       });
     }
   },
@@ -360,7 +365,7 @@ window.Comp = {
           $btn.text('加载更多').removeClass('frozen');
           return self.reRender(data, $('.packery-container'));
         }).fail(function (jqXHR, textStatus, errorThrown) {
-          console.info(jqXHR, textStatus);
+          console.log('XHR对象: ', jqXHR.toString(), 'textStatus: ', textStatus);
         });
       });
     },
@@ -474,7 +479,7 @@ window.Comp = {
       location.hash = id;
       $(id).siblings('.section').addClass('hidden');
       $(id).removeClass('hidden');
-      Helper.$window.scrollTop(0)
+      Helper.$window.scrollTop(0);
       $container.find('.nav-li').each(function (idx, el) {
         if ($(el).data('section') === id) {
           return $(el).addClass('active');
