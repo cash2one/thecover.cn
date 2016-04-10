@@ -135,6 +135,22 @@ p {
         opacity: 1
     }
 }
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
 @keyframes fadeIn {
     0% {
         opacity: 0
@@ -142,6 +158,23 @@ p {
     100% {
         opacity: 1
     }
+}
+
+@-webkit-keyframes blinker {
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+}
+@-ms-keyframes blinker {
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+}
+@-moz-keyframes blinker {
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+}
+@keyframes blinker {
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
 }
 .fadeIn {
     -webkit-animation-name: fadeIn;
@@ -188,7 +221,7 @@ p {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 100;
     -webkit-transition: all 300ms linear;
     -moz-transition: all 300ms linear;
     -ms-transition: all 300ms linear;
@@ -235,10 +268,13 @@ p {
     background-color: #a72a22;
     font-size: 17px;
 }
+.interacting .top-nav-960:hover {
+    background-color: #a72a22;
+}
 .header-wrapper .channel-nav-li.current {
     font-size: 18px
 }
-.header-wrapper .channel-nav-li a, .header-wrapper .interacting-960 .top-nav-960 a {
+.header-wrapper .channel-nav-li a, .header-wrapper .interacting-960 .top-nav-960>a {
     /*background-color: #d1372d;*/
     cursor: pointer;
     display: block;
@@ -250,12 +286,98 @@ p {
     -ms-user-select: none;
     user-select: none
 }
+.header-wrapper .interacting-960 .top-nav-960.menu li:hover {
+    background-color: rgba(193,193,193,1);
+}
+.header-wrapper .interacting-960 .top-nav-960.menu li>a, .header-wrapper .interacting-960 .give-a-shit li>a {
+    display: block;
+    width: 100%;
+    color: #0f1419;
+    font-size: 12px;
+    text-align: center;
+}
+.header-wrapper .interacting-960 .top-nav-960 ul {
+    background-color: white;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid rgba(248,225,226,1);
+    -webkit-border-radius: 0 0 7.5px 7.5px;
+    -moz-border-radius: 0 0 7.5px 7.5px;
+    border-radius: 0 0 7.5px 7.5px;
+    display: none;
+}
+.header-wrapper .interacting-960 .give-a-shit:hover ul, .header-wrapper .interacting-960 .menu:hover ul {
+    display: block;
+}
+.header-wrapper .interacting-960 .top-nav-960.menu li>a {
+    line-height: 30px;
+    height: 30px;
+}
+.header-wrapper .interacting-960 .give-a-shit li>a {
+    line-height: 40px;
+    height: 40px;
+    border-bottom: 1px solid rgba(248,225,226,1);
+}
+.header-wrapper .interacting-960 .give-a-shit li>a:last-of-type {
+    border-bottom: none;
+}
+
+.header-wrapper .interacting-960 .give-a-shit {
+    color: black;
+}
+.header-wrapper .interacting-960 .give-a-shit li {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative
+}
+.header-wrapper .interacting-960 .give-a-shit ul {
+    padding: 0 10px;
+}
+.header-wrapper .interacting-960 .give-a-shit li.for-wechat {
+    background-image: url("./img/icn_wechat.png");
+}
+.header-wrapper .interacting-960 .give-a-shit li.for-wechat .app-download {
+    position: absolute;
+}
+.header-wrapper .interacting-960 .give-a-shit li.for-weibo {
+    background-image: url("./img/icn_weibo.png");
+}
+
 #btn_load_more,
 .grid-item {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none
 }
+#btn_load_more .blink {
+    -webkit-animation-name: blinker;
+    -moz-animation-name: blinker;
+    -o-animation-name: blinker;
+    animation-name: blinker;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+}
+#btn_load_more .blink-1 {
+    -webkit-animation-delay: 150ms;
+    -moz-animation-delay: 150ms;
+    -o-animation-delay: 150ms;
+    animation-delay: 150ms;
+}
+#btn_load_more .blink-2 {
+    -webkit-animation-delay: 300ms;
+    -moz-animation-delay: 300ms;
+    -o-animation-delay: 300ms;
+    animation-delay: 300ms;
+}
+
 .header-wrapper .channel-nav-li.current a {
     cursor: unset
 }
@@ -330,6 +452,8 @@ p {
     -ms-transition: top 300ms ease-in;
     -o-transition: top 300ms ease-in;
     transition: top 300ms ease-in;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
     font-size: 15px;
     line-height: 15px;
@@ -384,7 +508,7 @@ p {
     display: none
 }
 .interacting .pop-up {
-    visibility: hidden;
+    /*visibility: hidden;*/
     position: absolute;
     top: 70px;
     background: #fff;
@@ -436,7 +560,10 @@ p {
 }
 .express-news-scroll-area li>div .meta .tag,
 .interacting .app-download .btns {
-    float: right
+    float: right;
+}
+.express-news-scroll-area li>div .meta .tag {
+    display: none;
 }
 .interacting .app-download .btns a {
     display: block;
@@ -462,6 +589,22 @@ p {
 }
 .interacting .wechat-logo .pop-up {
     width: 140px
+}
+
+.interacting .for-app:hover .pop-up, .interacting .for-wechat:hover .pop-up {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    visibility: visible;
+    width: 150px;
+    height: auto;
+    right: 50px;
+    top: 0px;
+}
+.interacting .for-app .pop-up img.qr, .interacting .for-wechat .pop-up img.qr {
+    margin-left: 20px;
 }
 .interacting .more ul {
     background-color: #d1372d;
@@ -625,7 +768,7 @@ p {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border: 5px solid #f7f3f0;
+    border: 5px solid #cccccc;
     background-color: #f7f3f0;
     -webkit-border-radius:50%;
     -moz-border-radius:50%;
@@ -688,7 +831,10 @@ p {
     line-height: 20px;
     text-align: left;
     padding: 0 1em;
-    max-height: 40px
+    height: 40px;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
 }
 .express-news-scroll-area li>div .content {
     font-size: 13px;
@@ -901,6 +1047,7 @@ p {
     transition: all 600ms cubic-bezier(.31, .57, .68, 1.36);
     opacity: 0
 }
+.pagetype-index .grid-item a.link-to-video .thumbnail-wrapper:after,
 .pagetype-news-channel .grid-item a.link-to-video .thumbnail-wrapper:after,
 .pagetype-video-channel .grid-item a.link-to-video:hover .thumbnail-wrapper:after {
     opacity: 1
@@ -1019,6 +1166,10 @@ p {
 }
 #video-player-wrapper .video-js {
     width: 100%
+}
+.no-flexbox #video-player-wrapper .vjs-progress-control {
+    min-width: 500px;
+    margin: 0 auto;
 }
 #video-player-wrapper video {
     width: 100%;
@@ -1233,10 +1384,11 @@ p {
     position: absolute;
     bottom: 8px
 }
-.content-wrapper .main-article .comments .none-content-err {
+.content-wrapper .none-content-err {
     font-size: 32px;
     line-height: 32px;
-    text-align: center
+    text-align: center;
+    width: 100%;
 }
 .content-wrapper .main-article .comments h3 {
     font-size: 16px;
@@ -1514,8 +1666,10 @@ p {
 .pagetype-more .main-section p {
     margin: 1em 0
 }
-#footer a,
 .pagetype-more .main-section p a {
+    color: #fb2614
+}
+#footer a {
     color: #c4c4c4
 }
 .pagetype-more .section textarea {

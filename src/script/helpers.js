@@ -275,7 +275,7 @@ window.Comp = {
       if (Helper.getSearchHistory()) {
         $.each(Helper.getSearchHistory(), function (idx, el) {
           if (el && el !== '' && el !== ' ') {
-            $entrys.append('<li class="hidden"><a href="/search?q=' + el + '">' + el + "</a></li>");
+            $entrys.append('<li class="hidden"><a href="http://170.240.110.243/fmWeb-web/search?q=' + el + '&pageindex=1' + '">' + el + "</a></li>");
           }
         });
         $('.search-form').append($entrys);
@@ -357,12 +357,14 @@ window.Comp = {
         if ($btn.hasClass('frozen') || $btn.hasClass('hidden')) {
           return evt.preventDefault();
         }
-        $btn.text('加载中 ...').addClass('frozen');
+        //$btn.text('加载中 ...').addClass('frozen');
+        $btn.html('<span>加载中 </span><em class="blink-0 blink">。</em><em class="blink-1 blink">。</em><em class="blink-2 blink">。</em>').addClass('frozen');
         Helper.$body.addClass('loading-more-cards');
         self.fetchMoreCard(config, $express_news).done(function (data, textStatus, jqXHR) {
           console.log('加载成功!');
           Helper.$body.removeClass('loading-more-cards');
-          $btn.text('加载更多').removeClass('frozen');
+          //$btn.text('加载更多').removeClass('frozen');
+          $btn.html('<span>加载更多</span>').removeClass('frozen');
           return self.reRender(data, $('.packery-container'));
         }).fail(function (jqXHR, textStatus, errorThrown) {
           console.log('XHR对象: ', jqXHR.toString(), 'textStatus: ', textStatus);
