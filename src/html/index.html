@@ -21,7 +21,7 @@
     <link rel="apple-touch-icon-precomposed" href="./img/favicon.png">
 </head>
 
-<body class="pagetype-index scroll-and-load">
+<body class="pagetype-index scroll-and-load hidden">
 <!--导航区域-->
 <div class="header-wrapper">
     <div class="responsive-wrapper">
@@ -122,25 +122,21 @@
         <!--精选-->
         <div class="editor-selected">
             <!--幻灯片-->
-            <div id="banner_slider_container" class="slider hidden">
+            <div id="banner_slider_container" class="slider hidden" data-num="幻灯片张数">
                 <div class="swiper-wrapper">
                     <div class="each-slide-of-banner swiper-slide">
-                        <a class="each-slide-of-banner-a-container" href="www.google.com" style='background-image: url("./img/sample_pic_1.jpg")'> </a>
+                        <a class="each-slide-of-banner-a-container" href="#" data-src='./img/sample_pic_1.jpg'>
+                        </a>
                         <figcaption onclick='location.href = "www.google.com"'>
                             <p class="tag">专题</p>
                             <p class="des">觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒</p>
                         </figcaption>
                     </div>
                     <div class="each-slide-of-banner swiper-slide">
-                        <a class="each-slide-of-banner-a-container" href="www.google.com" style='background-image: url("./img/sample_pic_2.jpg")'> </a>
+                        <a class="each-slide-of-banner-a-container" href="#" data-src='./img/sample_pic_2.jpg'>
+                        </a>
                         <figcaption onclick='location.href = "www.google.com"'>
                             <p class="tag">专题</p>
-                            <p class="des">觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒</p>
-                        </figcaption>
-                    </div>
-                    <div class="each-slide-of-banner swiper-slide">
-                        <a class="each-slide-of-banner-a-container" href="www.bing.com" style='background-image: url("./img/sample_pic_10.jpg")'> </a>
-                        <figcaption onclick='location.href = "www.bing.com"'>
                             <p class="des">觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒</p>
                         </figcaption>
                     </div>

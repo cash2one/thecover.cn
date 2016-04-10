@@ -63,7 +63,16 @@ body {
     background-color: #f0f0f0;
     font-family: "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
     -webkit-font-smoothing: auto;
-    -webkit-text-size-adjust: 100%
+    -webkit-text-size-adjust: 100%;
+    opacity: 1;
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    -ms-transition: opacity 200ms ease-in;
+    -o-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in;
+}
+body.hidden {
+    opacity: 0;
 }
 li,
 ol,

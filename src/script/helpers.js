@@ -28,6 +28,21 @@ window.Helper = {
       'flag_footer_top': this.flag_footer_top = $('#footer_flag').offset().top
     }
   },
+  'load_img': function ($container) {
+    var d = $.Deferred();
+    var src = $container.data('src');
+    var $tempImg = $('<img>');
+    $tempImg.attr('src', src);
+    $tempImg.on('load', function () {
+      console.log('onloaded');
+      d.resolve($container);
+    });
+    $tempImg.on('error', function () {
+      console.log('error');
+      d.reject($container);
+    });
+    return d.promise();
+  },
   'Timer_Scroll_0': true,
   'Timer_Scroll_1': true,
   'scroll_with_delay': function (timer_id, spec, callback, delay) {
@@ -84,13 +99,15 @@ window.Helper = {
   }
 };
 window.Comp = {
-  //初始化slick幻灯片
+  //初始化k幻灯片
   'slider': {
     init: function ($container, config) {
       console.log('幻灯片初始化');
+      var d = $.Deferred();
       if ($container.data("initialized") === true) {
-        return false;
+        return d.resolve();
       }
+      var $slides = $container.find('.each-slide-of-banner-a-container');
       var conf = config || {
             loop: true,
             paginationClickable: true,
@@ -103,11 +120,18 @@ window.Comp = {
               $container.removeClass('hidden');
             }
           };
-      var $slider = new Swiper('#banner_slider_container', conf);
-      $container.data("initialized", true);
-      return this.bindEvents($slider);
-    },
-    bindEvents: function ($slider) {}
+      $.when(Helper.load_img($slides.eq(0))).done(function () {
+        $slides.each(function (idx, slide) {
+          $(this).css({
+            'background-image': 'url(' + $(this).data('src') + ')'
+          });
+        });
+        var $slider = new Swiper('#banner_slider_container', conf);
+        $container.data("initialized", true);
+        Helper.$body.removeClass('hidden');
+        return d.promise();
+      });
+    }
   },
   'dotdotdot': {
     init: function () {
@@ -178,14 +202,15 @@ window.Comp = {
         self.changeStyle($express_news);
       });
       Helper.$window.on('resize', function () {
-        self.setPosition($container, $express_news);
-        $express_news.perfectScrollbar('update');
+        self.setPosition($container, $express_news).then(function () {
+          $express_news.perfectScrollbar('update');
+        });
       });
     },
     changeStyle: function ($express_news) {
       var $flag = $('#footer_flag');
       var $footer = $('#footer');
-      if(Helper.isElementInViewport_Vertical($flag) && !$footer.hasClass('hidden')) {
+      if (Helper.isElementInViewport_Vertical($flag) && !$footer.hasClass('hidden')) {
         $express_news.addClass('go-with-parent');
       } else {
         $express_news.removeClass('go-with-parent');
@@ -193,8 +218,7 @@ window.Comp = {
     },
     setPosition: function ($container, $express_news) {
       var right_pos = Helper.wW - $container.offset().left - $container.width();
-      //var height = Helper.wH - $('.header-wrapper').height() - ($('#footer').height() + 40) - 12 - 1;
-      var height = Helper.wH - $('.header-wrapper').height() - 12*2 - 1;
+      var height = Helper.wH - $('.header-wrapper').height() - 12 * 2 - 1;
       return $express_news.css({
         'top': '82px',
         'right': right_pos + 'px',
@@ -253,13 +277,6 @@ window.Comp = {
         player.userActive(true);
         console.log(player.userActive());
       }, 1500);
-      //player.on('mouseout', function(){
-      //  controlBar.addClass('vjs-fade-out');
-      //});
-      //
-      //player.on('mouseover', function(){
-      //  controlBar.removeClass('vjs-fade-out');
-      //});
     }
   },
   'search_func': {
@@ -423,17 +440,17 @@ window.Comp = {
       });
     },
     'setPosition': function (w, $btn) {
-      if(w > 1350) {
+      if (w > 1350) {
         $btn.css({
           'left': ($('.content-wrapper').offset().left + $('.content-wrapper').width()) + 'px',
           'right': 'unset'
         });
-      } else if(w > 1200) {
+      } else if (w > 1200) {
         $btn.css({
           'left': 'unset',
           'right': '0px'
         });
-      } else if(w > 1065) {
+      } else if (w > 1065) {
         $btn.css({
           'left': ($('.content-wrapper').offset().left + $('.content-wrapper').width()) + 'px',
           'right': 'unset'
