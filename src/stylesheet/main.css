@@ -693,11 +693,11 @@ p {
     width: 30%;
     border: 1px solid #E5E5E5;
     visibility: visible;
-    -webkit-transition: bottom 300ms ease-in;
-    -moz-transition: bottom 300ms ease-in;
-    -ms-transition: bottom 300ms ease-in;
-    -o-transition: bottom 300ms ease-in;
-    transition: bottom 300ms ease-in;
+    -webkit-transition: bottom 200ms ease-in;
+    -moz-transition: bottom 200ms ease-in;
+    -ms-transition: bottom 200ms ease-in;
+    -o-transition: bottom 200ms ease-in;
+    transition: bottom 200ms ease-in;
 }
 .express-news.go-with-parent {
     position: absolute !important;
@@ -1984,6 +1984,16 @@ p {
 .pagetype-unsupport .qr-container img {
     width: 128px;
     height: 128px
+}
+/*专题*/
+.special-report .header-wrapper {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.special-report #banner_img {
+    position: relative;
+    top: 70px;
 }
 @media (min-width: 1200px) {
     .responsive-wrapper {

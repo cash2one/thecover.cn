@@ -13,13 +13,17 @@ $(document).ready(function () {
   //首页
   if (Helper.atPage('index')) {
     console.log('@首页');
-    Comp.slider.init($('#banner_slider_container'));
-    Comp.packery.init($('.packery-container'));
+    //Comp.slider.init($('#banner_slider_container'));
+    //Comp.express_news.init($('.responsive-wrapper'));
+    //Comp.packery.init($('.packery-container'));
     Comp.scroll_and_load.init($('body'), {
       'API': CONFIG.API.INDEX,
       'can_scroll_time': 3
     });
-    Comp.express_news.init($('.responsive-wrapper'));
+    $.when(Comp.express_news.init($('.responsive-wrapper')), Comp.packery.init($('.packery-container'))).done(function () {
+      console.log('main.js: L24 done');
+      Comp.slider.init($('#banner_slider_container'))
+    });
   }
   //视频详情页
   if (Helper.atPage('video-detail')) {
