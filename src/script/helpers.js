@@ -15,8 +15,7 @@ window.Helper = {
     var rect = el.getBoundingClientRect();
     return (rect.top >= 0 && rect.left >= 0 && rect.bottom <= this.wH && rect.right <= this.wW);
   },
-  'isElementInViewport_Vertical': function ($el) {
-    var el = $el.get(0);
+  'isElementInViewport_Vertical': function (el) {
     var rect = el.getBoundingClientRect();
     return (rect.top >= 0 && rect.bottom <= this.wH);
   },
@@ -214,9 +213,9 @@ window.Comp = {
       return d.promise();
     },
     changeStyle: function ($express_news) {
-      var $flag = $('#footer_flag');
+      var flag = $('#footer_flag').get(0);
       var $footer = $('#footer');
-      if (Helper.isElementInViewport_Vertical($flag) && !$footer.hasClass('hidden')) {
+      if (Helper.isElementInViewport_Vertical(flag) && !$footer.hasClass('hidden')) {
         $express_news.addClass('go-with-parent');
       } else {
         $express_news.removeClass('go-with-parent');
@@ -224,9 +223,9 @@ window.Comp = {
     },
     setPosition: function ($container, $express_news) {
       var right_pos = Helper.wW - $container.offset().left - $container.width();
-      var height = Helper.wH - $('.header-wrapper').height() - 12 * 2 - 1;
+      var height = Helper.wH - $('.header-wrapper').height() - 15 * 2 - 1;
       return $express_news.css({
-        'top': '82px',
+        'top': '85px',
         'right': right_pos + 'px',
         'height': height + 'px',
         'overflow': 'hidden'
@@ -353,13 +352,14 @@ window.Comp = {
     'bindEvents': function ($btn_load_more, config) {
       var self = this;
       var $express_news = $('#express_news');
+      var btn_load_more = $btn_load_more.get(0);
       //页面滚动加载
       Helper.scroll_with_delay(0, 'load_more', function () {
         if (Helper.$body.hasClass('loading-more-cards')) {
           return false;
         }
-        if (Helper.isElementInViewport_Vertical($btn_load_more)) {
-          console.error('Helper.isElementInViewport_Vertical($btn_load_more)');
+        if (Helper.isElementInViewport_Vertical(btn_load_more)) {
+          // console.error('Helper.isElementInViewport_Vertical(btn_load_more)');
           if ($btn_load_more.data('counts').scrolled_time++ === $btn_load_more.data('counts').can_scroll_time) {
             $btn_load_more.removeClass('hidden');
             $('#footer').removeClass('hidden');
@@ -523,6 +523,13 @@ window.Comp = {
           return $(el).removeClass('active');
         }
       });
+    }
+  },
+  // fixedHeight
+  'fixedHeight': {
+    init: function () {
+      // console.log('fixedHeight init()')
+      Helper.$body.height(Helper.wH - 82);
     }
   }
 };

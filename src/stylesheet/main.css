@@ -265,7 +265,7 @@ p {
 
 .content-wrapper.responsive-wrapper {
     position: relative;
-    margin: 82px auto 0
+    margin: 85px auto 0px;
 }
 
 .content-wrapper.responsive-wrapper:after {
@@ -293,7 +293,7 @@ p {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    margin-bottom: 12px
+    margin-bottom: 15px
 }
 
 .header-wrapper .logo {
@@ -336,6 +336,10 @@ p {
 .header-wrapper .interacting .search-icon.focus {
     background-color: #a72a22;
     font-size: 17px;
+}
+.header-wrapper .channel-nav-li.canceled.current,
+.header-wrapper .channel-nav-li.canceled:hover {
+    background-color: #D01820;
 }
 .interacting .more li:hover {
     font-size: 14px;
@@ -1146,7 +1150,7 @@ p {
 .each-slide-of-banner .tag {
     position: absolute;
     min-width: 60px;
-    bottom: 130px;
+    bottom: 100px;
     left: 20px;
     font-size: 18px;
     line-height: 30px;
@@ -1551,14 +1555,14 @@ p {
     float: left;
     min-height: 200px;
     background-color: #fff;
-    padding: 30px;
+    padding: 35px 30px;
 
 }
 
 .content-wrapper .main-article h1 {
     text-align: center;
     text-align: left;
-    font-size: 22px;
+    font-size: 24px;
     margin-bottom: 15px;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -1567,7 +1571,8 @@ p {
 }
 
 .content-wrapper .main-article .props-of-title {
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 40px;
     color: #C8C8C8;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -1592,13 +1597,18 @@ p {
 
 .content-wrapper .main-article > section {
     position: relative;
-    margin: 40px auto
+    margin: 30px auto;
 }
-
+.content-wrapper .main-article > section.article-content {
+    font-size: 14px;
+    line-height: 26px;
+}
+.content-wrapper .main-article > section.article-content p {
+    margin-bottom: 30px;
+}
 .content-wrapper .main-article > section:last-of-type {
     margin-bottom: 0
 }
-
 .article-content p::-moz-selection {
     color: white;
     background-color: #D01820;
@@ -2352,7 +2362,71 @@ p {
     width: 128px;
     height: 128px
 }
+.pagetype-404 {
+    height: 100%;
+}
+.pagetype-404 .table-like-wrapper {
+    display: table;
+    margin: 0 auto;
+    position: relative;
+    top: 100px;
+}
+.pagetype-404 #footer {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+.pagetype-404 .centre {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.pagetype-404 .centre img {
+    margin-bottom: 30px;
+}
+.pagetype-404 .centre p {
+    line-height: 30px;
+}
+.pagetype-404 .centre p a {
+    color: #c4c4c4;
+}
 
+.pagetype-404 .centre .go-back:before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 17px;
+    height: 15px;
+    background-image: url("./img/go-back.png");
+    background-size: cover;
+}
+.pagetype-404 .centre .go-index:before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 19px;
+    height: 17px;
+    background-image: url("./img/go-index.png");
+    background-size: cover;
+}
+.pagetype-404 .centre .close:before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 11px;
+    height: 11px;
+    background-image: url("./img/close.png");
+    background-size: cover;
+}
+.pagetype-404 .centre .refresh:before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 12px;
+    height: 13px;
+    background-image: url("./img/refresh.png");
+    background-size: cover;
+}
 /*专题*/
 .special-report .header-wrapper {
     -webkit-box-shadow: none;

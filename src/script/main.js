@@ -59,4 +59,9 @@ $(document).ready(function () {
     //console.log('@更多页');
     Comp.tabs.init($('.index-wrapper'));
   }
+  // 404
+  if (Helper.atPage('404') || Helper.atPage('maintenance')) {
+    //console.log('@404');
+    Comp.fixedHeight.init();
+  }
 });
