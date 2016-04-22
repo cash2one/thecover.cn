@@ -73,15 +73,9 @@ gulp.task('concat_js_production', function () {
       .pipe(changed('dist/', {
         extension: '.js'
       }))
-      //.pipe(sourcemaps.init())
       .pipe(concat('all.js'))
-      .pipe(filesize())
-      //.pipe(sourcemaps.write())
-      .pipe(rev())
+      .pipe(uglify())
       .pipe(gulp.dest('dist/'))
-      .pipe(browserSync.reload({
-        stream: true
-      }));
 });
 gulp.task('concat_css_dev', function () {
   return gulp.src(['node_modules/normalize.css/normalize.css', 'node_modules/swiper/dist/css/swiper.min.css', 'node_modules/video.js/dist/video-js.min.css', 'node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css', 'src/stylesheet/main.css'])
@@ -110,23 +104,16 @@ gulp.task('concat_css_production', function () {
       .pipe(changed('dist/', {
         extension: '.css'
       }))
-      //.pipe(sourcemaps.init())
       .pipe(concat('all.css'))
       .pipe(cleanCSS({
         compatibility: 'ie8'
       }))
-      .pipe(filesize())
       .pipe(autoprefixer({
         browsers: ['IE > 7', 'iOS > 7', 'Firefox > 20', '> 5%'],
         cascade: false
       }))
-      .pipe(filesize())
-      //.pipe(sourcemaps.write())
-      .pipe(rev())
+      // .pipe(rev())
       .pipe(gulp.dest('dist/'))
-      .pipe(browserSync.reload({
-        stream: true
-      }));
 });
 gulp.task('clean_my_css', function () {
   return gulp.src(['src/stylesheet/main.css'])

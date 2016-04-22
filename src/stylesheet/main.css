@@ -1602,6 +1602,7 @@ p {
 .content-wrapper .main-article > section.article-content {
     font-size: 14px;
     line-height: 26px;
+    overflow-x: hidden;
 }
 .content-wrapper .main-article > section.article-content p {
     margin-bottom: 30px;
