@@ -183,7 +183,6 @@ window.Comp = {
   //首页快讯
   'express_news': {
     'init': function ($container) {
-
       var self = this;
       var $express_news = $container.find('#express_news');
       return self.setPosition($container, $express_news).done(function () {

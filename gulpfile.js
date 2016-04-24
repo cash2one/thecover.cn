@@ -11,8 +11,6 @@ var filesize = require('gulp-filesize');
 var browserSync = require('browser-sync').create();
 var rev = require('gulp-rev');
 
-
-
 gulp.task('browserSync', function () {
   browserSync.init({
     server: {
@@ -41,7 +39,7 @@ gulp.task('copyJs', function () {
   gulp.src('src/script/modernizr-custom.js').pipe(gulp.dest('dist/'));
 });
 gulp.task('concat_js_dev', function () {
-  return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/packery/dist/packery.pkgd.min.js', 'node_modules/swiper/dist/js/swiper.jquery.min.js', 'node_modules/jquery.dotdotdot/src/js/jquery.dotdotdot.min.js', 'node_modules/perfect-scrollbar/dist/js/min/perfect-scrollbar.jquery.min.js', 'node_modules/video.js/dist/video.min.js', 'src/script/conf_dev.js', 'src/script/helpers.js', 'src/script/main.js'])
+  return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/packery/dist/packery.pkgd.min.js', 'node_modules/swiper/dist/js/swiper.jquery.min.js', 'node_modules/jquery.dotdotdot/src/js/jquery.dotdotdot.min.js', 'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js', 'node_modules/video.js/dist/video.min.js', 'src/script/conf_dev.js', 'src/script/helpers.js', 'src/script/main.js'])
       .pipe(changed('dist/', {
         extension: '.js'
       }))
@@ -55,7 +53,7 @@ gulp.task('concat_js_dev', function () {
       }));
 });
 gulp.task('concat_js_test', function () {
-  return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/packery/dist/packery.pkgd.min.js', 'node_modules/swiper/dist/js/swiper.jquery.min.js', 'node_modules/jquery.dotdotdot/src/js/jquery.dotdotdot.min.js', 'node_modules/perfect-scrollbar/dist/js/min/perfect-scrollbar.jquery.min.js', 'node_modules/video.js/dist/video.min.js', 'src/script/conf_test.js', 'src/script/helpers.js', 'src/script/main.js'])
+  return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/packery/dist/packery.pkgd.min.js', 'node_modules/swiper/dist/js/swiper.jquery.min.js', 'node_modules/jquery.dotdotdot/src/js/jquery.dotdotdot.min.js', 'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js', 'node_modules/video.js/dist/video.min.js', 'src/script/conf_test.js', 'src/script/helpers.js', 'src/script/main.js'])
       .pipe(changed('dist/', {
         extension: '.js'
       }))
@@ -69,7 +67,7 @@ gulp.task('concat_js_test', function () {
       }));
 });
 gulp.task('concat_js_production', function () {
-  return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/packery/dist/packery.pkgd.min.js', 'node_modules/swiper/dist/js/swiper.jquery.min.js', 'node_modules/jquery.dotdotdot/src/js/jquery.dotdotdot.min.js', 'node_modules/perfect-scrollbar/dist/js/min/perfect-scrollbar.jquery.min.js', 'node_modules/video.js/dist/video.min.js', 'src/script/conf_production.js', 'src/script/helpers.js', 'src/script/main.js'])
+  return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/packery/dist/packery.pkgd.min.js', 'node_modules/swiper/dist/js/swiper.jquery.min.js', 'node_modules/jquery.dotdotdot/src/js/jquery.dotdotdot.min.js', 'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js', 'node_modules/video.js/dist/video.min.js', 'src/script/conf_production.js', 'src/script/helpers.js', 'src/script/main.js'])
       .pipe(changed('dist/', {
         extension: '.js'
       }))
