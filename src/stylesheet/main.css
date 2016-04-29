@@ -1196,7 +1196,8 @@ p {
     box-sizing: border-box;
     display: block;
     width: 100%;
-    height: 150px;
+    /*height: 150px;*/
+    height: 177.1875px;
     position: relative;
     background-repeat: no-repeat;
     -webkit-background-size: cover;

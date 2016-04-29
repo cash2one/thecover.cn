@@ -28,7 +28,7 @@
     "video.js": "^5.9.0"
   },
   "scripts": {
-    "dev": "gulp clean && gulp dev && gulp watch",
+    "dev": "gulp clean && gulp dev && gulp watch_dev",
     "prod": "gulp clean && gulp production"
   },
   "author": "陆欢",

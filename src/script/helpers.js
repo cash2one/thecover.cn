@@ -104,6 +104,10 @@ window.Comp = {
     init: function ($container, config) {
       //console.log('幻灯片初始化');
       var d = $.Deferred();
+      if($container.length === 0) {
+        d.resolve(Helper.$body.removeClass('hidden'));
+        return d.promise();
+      }
       if ($container.data("initialized") === true) {
         return d.resolve();
       }
