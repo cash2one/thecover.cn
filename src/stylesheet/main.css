@@ -248,7 +248,7 @@ p {
 }
 
 .header-wrapper .logo {
-    width: 180px;
+    width: 170px;
     float: left
 }
 
@@ -272,7 +272,7 @@ p {
     -webkit-transition: background-color .1s ease-in;
     transition: background-color .1s ease-in;
     font-size: 15px;
-    width: 70px
+    width: 64px;
 }
 
 .header-wrapper .channel-nav-li.current,
@@ -426,8 +426,9 @@ p {
 }
 
 .header-wrapper .interacting-960 {
-    max-width: 180px;
-    width: 180px;
+    /*max-width: 180px;*/
+    /*width: 180px;*/
+    width: 165px;
     display: none
 }
 
@@ -903,9 +904,10 @@ p {
 }
 
 .editor-selected {
+    position: relative;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    float: left;
+    /*float: left;*/
     width: 100%
 }
 
@@ -933,9 +935,9 @@ p {
 #banner_slider_container {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border: 1px solid #E5E5E5;
+    /*border: 1px solid #E5E5E5;*/
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 13.3333px;
     overflow: hidden
 }
 
@@ -949,8 +951,9 @@ p {
 
 #banner_slider_container,
 #banner_slider_container .each-slide-of-banner {
-    height: 467px;
-    width: 830px
+    height: 504.375px;
+    /*width: 830px*/
+    width: 895.666667px
 }
 
 #banner_slider_container .each-slide-of-banner a.each-slide-of-banner-a-container {
@@ -1037,10 +1040,26 @@ p {
     max-width: 100%;
     height: auto
 }
-
+#link_to_specific_page {
+    width: 290px;
+    /*margin-left: 13.3333px;*/
+    height: 504.38px;
+    position: absolute;
+    top: 0px;
+    right: 1px; /*补齐与下面卡片宽度浮点数累计的差距*/
+}
+#link_to_specific_page >a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url("./img/sample_pic_1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .grid-item {
     background-color: #fff;
-    width: 270px;
+    /*width: 270px;*/
+    width: 290px;
     height: 310px;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -1049,7 +1068,8 @@ p {
 }
 
 .grid-item.grid-item--width2 {
-    width: 550px
+    /*width: 550px*/
+    width: 593.33333px
 }
 
 .grid-item a.ads,
@@ -1076,7 +1096,8 @@ p {
 
 .grid-item a.link-to-article .thumbnail-wrapper {
     position: relative;
-    height: 200px;
+    /*height: 200px;*/
+    height: 217.5px;
     background-color: #fff;
     overflow: hidden;
     -webkit-transition: all .6s;
@@ -2276,7 +2297,8 @@ p {
     }
     .editor-selected,
     .pagetype-index #btn_load_more {
-        width: 830px
+        /*width: 830px*/
+        width: 100%
     }
     .express-news,
     .express-news-date,
@@ -2312,9 +2334,11 @@ p {
         width: 960px;
         height: 540px
     }
-    .header-wrapper .channel-nav-li,
+    .header-wrapper .channel-nav-li {
+        width: 56.5px;
+    }
     .header-wrapper .interacting-960 .top-nav-960 {
-        width: 60px
+        width: 55px;
     }
     .header-wrapper .interacting.interacting-1200 {
         display: none!important
@@ -2327,7 +2351,8 @@ p {
         width: 100%
     }
     .express-news,
-    .express-news.hidden {
+    .express-news.hidden,
+    #link_to_specific_page {
         display: none
     }
     .editor-selected {
@@ -2335,13 +2360,13 @@ p {
     }
     .col-4 .grid-item,
     .grid-item {
-        width: 313.33px
+        width: 311.11111px;
     }
     .grid-item .thumbnail-wrapper {
-        height: 232px
+        height: 233.333333px;
     }
     .grid-item.grid-item--width2 {
-        width: 636.67px
+        width: 635.55555552px
     }
     .pagetype-detail .main-article {
         width: 100%

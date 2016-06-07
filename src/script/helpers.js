@@ -184,57 +184,6 @@ window.Comp = {
       });
     }
   },
-  //首页快讯
-  'express_news': {
-    'init': function ($container) {
-      var self = this;
-      var $express_news = $container.find('#express_news');
-      return self.setPosition($container, $express_news).done(function () {
-        $express_news.perfectScrollbar({
-          wheelSpeed: 2,
-          wheelPropagation: true,
-          //swipePropagation: true,
-          minScrollbarLength: 20,
-          maxScrollbarLength: 150,
-          suppressScrollX: true
-        });
-        $express_news.removeClass('hidden');
-        return self.bindEvents($container, $express_news);
-      });
-    },
-    bindEvents: function ($container, $express_news) {
-      var d = $.Deferred();
-      var self = this;
-      Helper.$window.on('scroll', function () {
-        self.changeStyle($express_news);
-      });
-      Helper.$window.on('resize', function () {
-        self.setPosition($container, $express_news).then(function () {
-          $express_news.perfectScrollbar('update');
-        });
-      });
-      return d.promise();
-    },
-    changeStyle: function ($express_news) {
-      var flag = $('#footer_flag').get(0);
-      var $footer = $('#footer');
-      if (Helper.isElementInViewport_Vertical(flag) && !$footer.hasClass('hidden')) {
-        $express_news.addClass('go-with-parent');
-      } else {
-        $express_news.removeClass('go-with-parent');
-      }
-    },
-    setPosition: function ($container, $express_news) {
-      var right_pos = Helper.wW - $container.offset().left - $container.width();
-      var height = Helper.wH - $('.header-wrapper').height() - 15 * 2 - 1;
-      return $express_news.css({
-        'top': '85px',
-        'right': right_pos + 'px',
-        'height': height + 'px',
-        'overflow': 'hidden'
-      }).promise();
-    }
-  },
   //卡片部分
   'packery': {
     init: function ($container, config) {
@@ -249,7 +198,7 @@ window.Comp = {
       $container.packery({
         initLayout: false,
         itemSelector: '.grid-item',
-        gutter: 10,
+        gutter: 13.3333,
         stamp: ".packery-stamp",
         transitionDuration: '0.2s'
       });
@@ -257,10 +206,8 @@ window.Comp = {
     },
     'bindEvents': function ($container) {
       var d = $.Deferred();
-      var $express_news = $('#express_news');
       $container.on('layoutComplete', function () {
         $container.removeClass('hidden');
-        $express_news.removeClass('with-parent');
         return d.resolve();
       });
       return $container.packery() && d.promise();
@@ -354,7 +301,6 @@ window.Comp = {
     },
     'bindEvents': function ($btn_load_more, config) {
       var self = this;
-      var $express_news = $('#express_news');
       var btn_load_more = $btn_load_more.get(0);
       //页面滚动加载
       Helper.scroll_with_delay(0, 'load_more', function () {
@@ -366,11 +312,10 @@ window.Comp = {
           if ($btn_load_more.data('counts').scrolled_time++ === $btn_load_more.data('counts').can_scroll_time) {
             $btn_load_more.removeClass('hidden');
             $('#footer').removeClass('hidden');
-            Comp.express_news.changeStyle($express_news);
             return Helper.$window.off('scroll.load_more');
           }
           Helper.$body.addClass('loading-more-cards');
-          self.fetchMoreCard(config, $express_news).done(function (data, textStatus, jqXHR) {
+          self.fetchMoreCard(config).done(function (data, textStatus, jqXHR) {
             //console.log('加载成功!');
             Helper.$body.removeClass('loading-more-cards');
             self.reRender(data, $('.packery-container'), $btn_load_more);
@@ -388,7 +333,7 @@ window.Comp = {
         }
         $btn.html('<span>加载中 </span><em class="blink-0 blink">。</em><em class="blink-1 blink">。</em><em class="blink-2 blink">。</em>').addClass('frozen');
         Helper.$body.addClass('loading-more-cards');
-        self.fetchMoreCard(config, $express_news).done(function (data, textStatus, jqXHR) {
+        self.fetchMoreCard(config).done(function (data, textStatus, jqXHR) {
           //console.log('加载成功!');
           Helper.$body.removeClass('loading-more-cards');
           $btn.html('<span>加载更多</span>').removeClass('frozen');
@@ -398,10 +343,9 @@ window.Comp = {
         });
       });
     },
-    'fetchMoreCard': function (config, $express_news) {
+    'fetchMoreCard': function (config) {
       var payload = $('.packery-container').data('params');
       //console.log('fetchMoreCard() payload: ', payload);
-      $express_news.removeClass('go-with-parent');
       return Helper.getHtml(config.API, payload);
     },
     'reRender': function (data, $container, $btn) {
@@ -414,7 +358,6 @@ window.Comp = {
       if($container.data('params').lastid == '-1') {
         //console.log('last ID: ', -1);
         $('#footer').removeClass('hidden');
-        //Comp.express_news.changeStyle($express_news);
         Helper.$window.off('scroll.load_more');
         return $btn.html('<span>没有更多了~ </span>').removeClass('hidden').addClass('frozen').off('click');
       }

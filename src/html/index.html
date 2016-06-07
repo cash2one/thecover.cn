@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="format-detection" content="telephone=no,address=no,email=no">
-    <meta property="wb:webmaster" content="584a0a29372ef013"/>
+    <meta property="wb:webmaster" content="584a0a29372ef013" />
     <script type="text/javascript" src="modernizr-custom.js"></script>
     <link rel="stylesheet" type="text/css" href="all.css">
     <link rel="icon" type="image/png" href="./img/favicon.jpg">
@@ -34,14 +34,16 @@
                 <ul class="top-nav">
                     <li class="channel-nav-li" data-pagetype="index"> <a href="/">封面</a> </li>
                     <li class="channel-nav-li"> <a>时事</a> </li>
+                    <li class="channel-nav-li"> <a>视频</a> </li>
                     <li class="channel-nav-li"> <a>校园</a> </li>
+                    <li class="channel-nav-li"> <a>生活</a> </li>
                     <li class="channel-nav-li"> <a>体育</a> </li>
                     <li class="channel-nav-li"> <a>娱乐</a> </li>
-                    <li class="channel-nav-li"> <a>生活</a> </li>
                     <li class="channel-nav-li"> <a>商业</a> </li>
                     <li class="channel-nav-li"> <a>科技</a> </li>
+                    <li class="channel-nav-li"> <a>汽车</a> </li>
                     <li class="channel-nav-li"> <a>封蜜</a> </li>
-                    <li class="channel-nav-li canceled"></li>
+                    <!--<li class="channel-nav-li canceled"></li>-->
                 </ul>
             </nav>
         </header>
@@ -123,28 +125,32 @@
         <!--精选-->
         <div class="editor-selected">
             <!--幻灯片-->
-            <!--<div id="banner_slider_container" class="slider" data-num="幻灯片张数">-->
-                <!--<div class="swiper-wrapper">-->
-                    <!--<div class="each-slide-of-banner swiper-slide">-->
-                        <!--<a class="each-slide-of-banner-a-container" href="#" data-src='./img/sample_pic_1.jpg'>-->
-                        <!--</a>-->
-                        <!--<figcaption onclick='window.open("www.google.com", "_blank");'>-->
-                            <!--<p class="tag">专题</p>-->
-                            <!--<p class="des">觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒</p>-->
-                        <!--</figcaption>-->
-                    <!--</div>-->
-                    <!--<div class="each-slide-of-banner swiper-slide">-->
-                        <!--<a class="each-slide-of-banner-a-container" href="#" data-src='./img/sample_pic_2.jpg'>-->
-                        <!--</a>-->
-                        <!--<figcaption onclick='window.open("www.google.com", "_blank");'>-->
-                            <!--<p class="tag">专题</p>-->
-                            <!--<p class="des">觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒</p>-->
-                        <!--</figcaption>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="swiper-pagination"></div>-->
-            <!--</div>-->
-            <!-- Begin 卡片区域-->
+            <div id="banner_slider_container" class="slider" data-num="幻灯片张数">
+                <div class="swiper-wrapper">
+                    <div class="each-slide-of-banner swiper-slide">
+                        <a class="each-slide-of-banner-a-container" href="#" data-src='./img/sample_pic_1.jpg'>
+                        </a>
+                        <figcaption onclick='window.open("www.google.com", "_blank");'>
+                            <p class="tag">专题</p>
+                            <p class="des">觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒</p>
+                        </figcaption>
+                    </div>
+                    <div class="each-slide-of-banner swiper-slide">
+                        <a class="each-slide-of-banner-a-container" href="#" data-src='./img/sample_pic_2.jpg'>
+                        </a>
+                        <figcaption onclick='window.open("www.google.com", "_blank");'>
+                            <p class="tag">专题</p>
+                            <p class="des">觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒,觉得自己萌萌哒</p>
+                        </figcaption>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <!--幻灯片右侧块-->
+            <div id="link_to_specific_page">
+                <a href="#"></a>
+            </div>
+            <!--Begin 卡片区域-->
             <div class="packery-container hidden" data-params='{"pageindex":2,"channeltype":1,"channelid":9,"lastid":6985}'>
                 <!--固定位置的卡片 要带packery-stamp的class名字-->
                 <!--开始:一张自由位置的卡片-->
@@ -247,79 +253,6 @@
             </div>
             <!-- End 卡片区域-->
         </div>
-        <!--快讯-->
-        <div class="express-news hidden" id="express_news">
-            <div class="express-news-date"> <span class="date">$date/</span> <span class="month">$month月</span> </div>
-            <div class="express-news-scroll-area nano">
-                <ul class="nano-content">
-                    <!--突发事件-->
-                    <li class="tufashijian">
-                        <div>
-                            <section>
-                                <p class="meta"> <span>12:00</span> <span class="location">国际静安</span> <span class="tag">突发事件</span> </p>
-                                <a href="#">
-                                    <h3>上海楼市调控九条意见出台</h3>
-                                    <p class="content"> 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 </p>
-                                </a>
-                            </section>
-                        </div>
-                    </li>
-                    <!--热门话题-->
-                    <li class="remenhuati">
-                        <div>
-                            <section>
-                                <p class="meta"> <span>12:00</span> <span class="location">上海长宁</span> <span class="tag">热门话题</span> </p>
-                                <a href="#">
-                                    <h3>
-                                        上海楼市调控九条意见出台
-                                        上海楼市调控九条意见出台
-                                        上海楼市调控九条意见出台
-                                    </h3>
-                                    <p class="content"> 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 </p> <img src="./img/siPangZi.jpg"> </a>
-                            </section>
-                        </div>
-                    </li>
-                    <!--本地资讯-->
-                    <li class="bendizixun">
-                        <div>
-                            <section>
-                                <p class="meta"> <span>12:00</span> <span class="location">上海黄浦</span> <span class="tag">本地资讯</span> </p>
-                                <a href="#">
-                                    <h3>上海楼市调控九条意见出台</h3>
-                                    <p class="content"> 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 </p>
-                                </a>
-                            </section>
-                        </div>
-                    </li>
-                    <!--重磅事件-->
-                    <li class="zhongbangshijian">
-                        <div>
-                            <section>
-                                <p class="meta"> <span>12:00</span> <span class="location">上海徐家汇</span> <span class="tag">重磅事件</span> </p>
-                                <a href="#">
-                                    <h3>上海楼市调控九条意见出台</h3>
-                                    <p class="content"> 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 那个发红包的好帅 </p>
-                                </a>
-                            </section>
-                        </div>
-                    </li>
-                    <!--Video Links-->
-                    <li class="putongxinwen">
-                        <div>
-                            <section>
-                                <p class="meta"> <span>13:21</span> <span class="location">成都合江亭</span> </p>
-                                <a class="link-to-article link-to-video" href="/news/1896" target="_blank">
-                                    <h3>被《五十度灰》的弟弟《五十度黑》笑成傻逼…</h3>
-                                    <p class="content"> 还记得去年最轰动的电影之一——《五十度灰》么。最近，它中枪了。 </p>
-                                    <div class="express-news-video-thumbnail" style='background-image: url("http://7xr4nk.com2.z0.glb.qiniucdn.com/FuqKl6aFRX8bqwiQcOgGCOVpOxEK?imageView2/1/w/300/h/150")'>
-                                    </div>
-                                </a>
-                            </section>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <!--加载更多-->
         <div id="btn_load_more" class="hidden">加载更多</div>
     </div>
@@ -336,8 +269,8 @@
 <!--页脚-->
 <div id="footer_flag"></div>
 <footer id="footer" class="hidden">
-    <p>关于我们  联系我们  版权声明  我要爆料   咨询邮箱：<a href="mailto:biz@thecover.cn">biz@thecover.cn</a> </p>
-    <p>© CopyRight 2016, thecover.cn, Inc.All Rights Reserved.     蜀ICP备15028104号-1</p>
+    <p>关于我们 联系我们 版权声明 我要爆料 咨询邮箱：<a href="mailto:biz@thecover.cn">biz@thecover.cn</a> </p>
+    <p>© CopyRight 2016, thecover.cn, Inc.All Rights Reserved. 蜀ICP备15028104号-1</p>
 </footer>
 <script type="text/javascript" src="all.js"></script>
 </body>

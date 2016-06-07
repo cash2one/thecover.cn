@@ -12,7 +12,10 @@ $(document).ready(function () {
     API: CONFIG.API.INDEX,
     can_scroll_time: 3
   }),
-      $.when(Comp.express_news.init($(".responsive-wrapper")), Comp.packery.init($(".packery-container"))).done(function () {
+    //$.when(Comp.express_news.init($(".responsive-wrapper")), Comp.packery.init($(".packery-container"))).done(function () {
+    //  Comp.slider.init($("#banner_slider_container"))
+    //})),
+      $.when(Comp.packery.init($(".packery-container"))).done(function () {
         Comp.slider.init($("#banner_slider_container"))
       })),
   Helper.atPage("video-detail") && Comp.video_player.init($("#video-player-wrapper")),
