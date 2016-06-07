@@ -377,7 +377,7 @@ p {
 }
 
 .header-wrapper .interacting-960 .give-a-shit li.for-wechat {
-    background-image: url(img/icn_wechat.png)
+    background-image: url(http://webcdn.thecover.cn/web/20160610/icn_wechat.png)
 }
 
 .header-wrapper .interacting-960 .give-a-shit li.for-wechat .app-download {
@@ -385,7 +385,7 @@ p {
 }
 
 .header-wrapper .interacting-960 .give-a-shit li.for-weibo {
-    background-image: url(img/icn_weibo.png)
+    background-image: url(http://webcdn.thecover.cn/web/20160610/icn_weibo.png)
 }
 
 #btn_load_more .blink {
@@ -723,7 +723,7 @@ p {
 }
 
 .express-news {
-    background-image: url(img/bg_express.png);
+    background-image: url(http://webcdn.thecover.cn/web/20160610/bg_express.png);
     background-repeat: repeat-y;
     background-size: cover;
     background-attachment: scroll;
@@ -1052,7 +1052,7 @@ p {
     display: block;
     width: 100%;
     height: 100%;
-    background-image: url("./img/sample_pic_1.jpg");
+    background-image: url("http://webcdn.thecover.cn/web/20160610/bg_link_to_specific_page.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -1128,7 +1128,7 @@ p {
     left: 50%;
     margin-left: -25px;
     margin-top: -25px;
-    background-image: url(img/play_btn.png);
+    background-image: url(http://webcdn.thecover.cn/web/20160610/play_btn.png);
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-transition: all .6s cubic-bezier(.31, .57, .68, 1.36);
@@ -1232,7 +1232,7 @@ p {
 .grid-item a.link-to-article .foot span.read-count:before {
     content: "";
     display: inline-block;
-    background-image: url(img/icon_eye.png);
+    background-image: url(http://webcdn.thecover.cn/web/20160610/icon_eye.png);
     width: 16px;
     height: 10px;
     line-height: 12px;
@@ -1293,7 +1293,7 @@ p {
     font-size: 2em;
     opacity: 0;
     position: absolute;
-    background-image: url(img/play_btn_big.png);
+    background-image: url(http://webcdn.thecover.cn/web/20160610/play_btn_big.png);
     background-size: cover;
     background-color: transparent!important;
     border: none!important;
@@ -1454,7 +1454,7 @@ p {
 .content-wrapper .main-article .props-of-title>span.read-count:before {
     content: "";
     display: inline-block;
-    background-image: url(img/icon_eye.png);
+    background-image: url(http://webcdn.thecover.cn/web/20160610/icon_eye.png);
     width: 16px;
     height: 10px;
     line-height: 12px;
@@ -1510,7 +1510,7 @@ p {
     position: relative;
     background-color: #EE432F;
     border-radius: 100%;
-    background-image: url(img/weixin.png);
+    background-image: url(http://webcdn.thecover.cn/web/20160610/weixin.png);
     background-repeat: no-repeat;
     background-position: center 40%
 }
@@ -1672,7 +1672,7 @@ p {
     left: 50%;
     margin-left: -25px;
     margin-top: -25px;
-    background-image: url(img/play_btn.png);
+    background-image: url(http://webcdn.thecover.cn/web/20160610/play_btn.png);
     background-repeat: no-repeat;
     background-size: cover
 }
@@ -1748,7 +1748,7 @@ p {
     height: 54px;
     text-indent: -999px;
     background-color: #fff;
-    background-image: url(img/magnifier_grey.png);
+    background-image: url(http://webcdn.thecover.cn/web/20160610/magnifier_grey.png);
     background-position: center;
     background-repeat: no-repeat;
     outline: 0
@@ -1986,7 +1986,7 @@ p {
 }
 
 #btn_back_to_top_container .with-hover {
-    background-image: url(img/icon_qr.png)
+    background-image: url(http://webcdn.thecover.cn/web/20160610/icon_qr.png)
 }
 
 #btn_back_to_top_container .qr-container {
@@ -2045,7 +2045,7 @@ p {
 
 #btn_back_to_top {
     border-top: 1px solid #C8C8C8;
-    background-image: url(img/icon_btn_back_to_top.png)
+    background-image: url(http://webcdn.thecover.cn/web/20160610/icon_btn_back_to_top.png)
 }
 
 #share_icons {
@@ -2100,11 +2100,11 @@ p {
 }
 
 .share-to-wechat {
-    background-image: url(img/icon_wexin.png)
+    background-image: url(http://webcdn.thecover.cn/web/20160610/icon_wexin.png)
 }
 
 .share-to-weibo {
-    background-image: url(img/icon_weibo.png)
+    background-image: url(http://webcdn.thecover.cn/web/20160610/icon_weibo.png)
 }
 
 .share-to-weibo a {
@@ -2248,25 +2248,25 @@ p {
 .pagetype-404 .centre .go-back:before {
     width: 17px;
     height: 15px;
-    background-image: url(img/go-back.png)
+    background-image: url(http://webcdn.thecover.cn/web/20160610/go-back.png)
 }
 
 .pagetype-404 .centre .go-index:before {
     width: 19px;
     height: 17px;
-    background-image: url(img/go-index.png)
+    background-image: url(http://webcdn.thecover.cn/web/20160610/go-index.png)
 }
 
 .pagetype-404 .centre .close:before {
     width: 11px;
     height: 11px;
-    background-image: url(img/close.png)
+    background-image: url(http://webcdn.thecover.cn/web/20160610/close.png)
 }
 
 .pagetype-404 .centre .refresh:before {
     width: 12px;
     height: 13px;
-    background-image: url(img/refresh.png)
+    background-image: url(http://webcdn.thecover.cn/web/20160610/refresh.png)
 }
 
 .special-report .header-wrapper {
