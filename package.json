@@ -29,7 +29,7 @@
   },
   "scripts": {
     "dev": "gulp clean && gulp dev && gulp watch_dev",
-    "prod": "gulp clean && gulp production"
+    "prod": "gulp clean && gulp uglify_myjs && gulp production"
   },
   "author": "陆欢",
   "license": "ISC"

@@ -1,16 +1,15 @@
-var gulp = require('gulp');
-var changed = require('gulp-changed');
-var sourcemaps = require('gulp-sourcemaps');
-var htmlmin = require('gulp-htmlmin');
-var cleanCSS = require('gulp-clean-css');
-var uglify = require('gulp-uglify');
 var autoprefixer = require('gulp-autoprefixer');
-var concat = require('gulp-concat');
-var clean = require('gulp-clean');
-var filesize = require('gulp-filesize');
 var browserSync = require('browser-sync').create();
+var changed = require('gulp-changed');
+var clean = require('gulp-clean');
+var cleanCSS = require('gulp-clean-css');
+var concat = require('gulp-concat');
+var filesize = require('gulp-filesize');
+var gulp = require('gulp');
+var htmlmin = require('gulp-htmlmin');
 var rev = require('gulp-rev');
-
+var sourcemaps = require('gulp-sourcemaps');
+var uglify = require('gulp-uglify');
 gulp.task('browserSync', function () {
   browserSync.init({
     server: {
@@ -74,11 +73,7 @@ gulp.task('uglify_myjs', function () {
 });
 gulp.task('concat_js_production', function () {
   return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/packery/dist/packery.pkgd.min.js', 'node_modules/swiper/dist/js/swiper.jquery.min.js', 'node_modules/jquery.dotdotdot/src/js/jquery.dotdotdot.min.js', 'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js', 'node_modules/video.js/dist/video.min.js', 'src/script/my.js'])
-      .pipe(changed('dist/', {
-        extension: '.js'
-      }))
       .pipe(concat('all.js'))
-      // .pipe(uglify())
       .pipe(gulp.dest('dist/'))
 });
 gulp.task('concat_css_dev', function () {

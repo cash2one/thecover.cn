@@ -302,7 +302,7 @@ window.Comp = {
       if (Helper.getSearchHistory()) {
         $.each(Helper.getSearchHistory(), function (idx, el) {
           if (el && el !== '' && el !== ' ') {
-            $entrys.append('<li class="hidden"><a href="http://170.240.110.243/fmWeb-web/search?q=' + el + '&pageindex=1' + '">' + el + "</a></li>");
+            $entrys.append('<li class="hidden">' + '<a href="' + CONFIG.API_BASE_URL + 'search?q=' + el + '&pageindex=1' + '">' + el + "</a></li>");
           }
         });
         $('.search-form').append($entrys);
