@@ -2,8 +2,7 @@
 .header-wrapper .interacting-960 .top-nav-960 ul,
 .interacting .pop-up,
 .search-form .search-history {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box
 }
 
 form,
@@ -67,15 +66,19 @@ button {
     cursor: pointer
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     margin: 0 auto;
     background-color: #f0f0f0;
-    font-family: "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+    font-family: -apple-system, "Hiragino Sans GB", "Roboto", "Droid Sans", "Microsoft YaHei", "Microsoft YaHei UI", "Microsoft JhengHei UI", "STHeiti", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: auto;
     -webkit-text-size-adjust: 100%;
     opacity: 1;
-    -webkit-transition: opacity .2s ease-in;
-    transition: opacity .2s ease-in
+    -webkit-transition: opacity .15s ease-in;
+    transition: opacity .15s ease-in
 }
 
 .header-wrapper,
@@ -272,7 +275,7 @@ p {
     -webkit-transition: background-color .1s ease-in;
     transition: background-color .1s ease-in;
     font-size: 15px;
-    width: 64px;
+    width: 64px
 }
 
 .header-wrapper .channel-nav-li.current,
@@ -313,7 +316,7 @@ p {
     user-select: none
 }
 
-#btn_load_more,
+.content-wrapper .main-article .props-of-title,
 .grid-item {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -426,8 +429,6 @@ p {
 }
 
 .header-wrapper .interacting-960 {
-    /*max-width: 180px;*/
-    /*width: 180px;*/
     width: 165px;
     display: none
 }
@@ -520,12 +521,6 @@ p {
     display: none;
     position: relative;
     z-index: 500
-}
-
-#btn_load_more,
-.express-news,
-.interacting .pop-up {
-    -moz-box-sizing: border-box
 }
 
 .search-form.active .search-history {
@@ -907,7 +902,6 @@ p {
     position: relative;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    /*float: left;*/
     width: 100%
 }
 
@@ -935,9 +929,8 @@ p {
 #banner_slider_container {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    /*border: 1px solid #E5E5E5;*/
     position: relative;
-    margin-bottom: 13.3333px;
+    margin-bottom: 13.33px;
     overflow: hidden
 }
 
@@ -951,9 +944,8 @@ p {
 
 #banner_slider_container,
 #banner_slider_container .each-slide-of-banner {
-    height: 504.375px;
-    /*width: 830px*/
-    width: 895.666667px
+    height: 504.38px;
+    width: 895.67px
 }
 
 #banner_slider_container .each-slide-of-banner a.each-slide-of-banner-a-container {
@@ -965,6 +957,7 @@ p {
     -webkit-transition: -webkit-transform .6s;
     transition: -webkit-transform .6s;
     transition: transform .6s;
+    transition: transform .6s, -webkit-transform .6s;
     transition: transform .6s, -webkit-transform .6s
 }
 
@@ -1040,25 +1033,26 @@ p {
     max-width: 100%;
     height: auto
 }
+
 #link_to_specific_page {
     width: 290px;
-    /*margin-left: 13.3333px;*/
     height: 504.38px;
     position: absolute;
-    top: 0px;
-    right: 1px; /*补齐与下面卡片宽度浮点数累计的差距*/
+    top: 0;
+    right: 1px
 }
-#link_to_specific_page >a {
+
+#link_to_specific_page>a {
     display: block;
     width: 100%;
     height: 100%;
-    background-image: url("http://webcdn.thecover.cn/web/20160610/bg_link_to_specific_page.jpg");
+    background-image: url(http://webcdn.thecover.cn/web/20160610/bg_link_to_specific_page.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover
 }
+
 .grid-item {
     background-color: #fff;
-    /*width: 270px;*/
     width: 290px;
     height: 310px;
     -webkit-user-select: none;
@@ -1068,8 +1062,7 @@ p {
 }
 
 .grid-item.grid-item--width2 {
-    /*width: 550px*/
-    width: 593.33333px
+    width: 593.33px
 }
 
 .grid-item a.ads,
@@ -1096,7 +1089,6 @@ p {
 
 .grid-item a.link-to-article .thumbnail-wrapper {
     position: relative;
-    /*height: 200px;*/
     height: 217.5px;
     background-color: #fff;
     overflow: hidden;
@@ -1156,6 +1148,7 @@ p {
     -webkit-transition: -webkit-transform .6s ease;
     transition: -webkit-transform .6s ease;
     transition: transform .6s ease;
+    transition: transform .6s ease, -webkit-transform .6s ease;
     transition: transform .6s ease, -webkit-transform .6s ease
 }
 
@@ -1433,7 +1426,7 @@ p {
     text-align: center;
     text-align: left;
     font-size: 24px;
-    margin-bottom: 15px;
+    margin-bottom: 15px
 }
 
 .content-wrapper .main-article .props-of-title {
@@ -1473,7 +1466,11 @@ p {
 }
 
 .content-wrapper .main-article>section.article-content p {
-    margin-bottom: 30px
+    font-size: 1.125rem;
+    font-family: -apple-system,"Hiragino Sans GB",Roboto,"Droid Sans","Microsoft YaHei","Microsoft YaHei UI","Microsoft JhengHei UI",STHeiti,Oxygen,Ubuntu,Cantarell,"Fira Sans","Helvetica Neue",sans-serif;
+    line-height: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: justify;
 }
 
 .content-wrapper .main-article>section:last-of-type {
@@ -1876,6 +1873,11 @@ p {
     width: 134px;
     height: 44px;
     line-height: 44px
+}
+
+.pagetype-more .entries * {
+    margin-left: 50px;
+    line-height: 1em
 }
 
 #footer,
@@ -2283,6 +2285,10 @@ p {
     background-size: cover
 }
 
+.for-app {
+    display: none!important
+}
+
 @media (min-width:1200px) {
     .responsive-wrapper {
         width: 1200px;
@@ -2297,7 +2303,6 @@ p {
     }
     .editor-selected,
     .pagetype-index #btn_load_more {
-        /*width: 830px*/
         width: 100%
     }
     .express-news,
@@ -2335,10 +2340,10 @@ p {
         height: 540px
     }
     .header-wrapper .channel-nav-li {
-        width: 56.5px;
+        width: 56.5px
     }
     .header-wrapper .interacting-960 .top-nav-960 {
-        width: 55px;
+        width: 55px
     }
     .header-wrapper .interacting.interacting-1200 {
         display: none!important
@@ -2350,9 +2355,9 @@ p {
     .pagetype-index #btn_load_more {
         width: 100%
     }
+    #link_to_specific_page,
     .express-news,
-    .express-news.hidden,
-    #link_to_specific_page {
+    .express-news.hidden {
         display: none
     }
     .editor-selected {
@@ -2360,16 +2365,20 @@ p {
     }
     .col-4 .grid-item,
     .grid-item {
-        width: 311.11111px;
+        width: 311.11px;
+        height: 270px
     }
     .grid-item .thumbnail-wrapper {
-        height: 233.333333px;
+        height: 233.33px
     }
     .grid-item.grid-item--width2 {
-        width: 635.55555552px
+        width: 635.56px
     }
     .pagetype-detail .main-article {
         width: 100%
+    }
+    .grid-item a.link-to-article .thumbnail-wrapper {
+        height: 174px
     }
 }
 

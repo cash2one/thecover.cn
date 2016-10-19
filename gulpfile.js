@@ -25,7 +25,7 @@ gulp.task('clean', function () {
 });
 gulp.task('copyHtml', function () {
   gulp.src('src/html/*.html')
-      //.pipe(htmlmin({collapseWhitespace: true}))
+      .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(gulp.dest('dist'));
 });
 gulp.task('copyImg', function () {
@@ -38,7 +38,7 @@ gulp.task('copyJs', function () {
   gulp.src('src/script/modernizr-custom.js').pipe(gulp.dest('dist/'));
 });
 gulp.task('concat_js_dev', function () {
-  return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/packery/dist/packery.pkgd.min.js', 'node_modules/swiper/dist/js/swiper.jquery.min.js', 'node_modules/jquery.dotdotdot/src/js/jquery.dotdotdot.min.js', 'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js', 'node_modules/video.js/dist/video.min.js', 'src/script/conf_dev.js', 'src/script/helpers.js', 'src/script/main.js'])
+  return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/packery/dist/packery.pkgd.min.js', 'node_modules/swiper/dist/js/swiper.jquery.min.js', 'node_modules/jquery.dotdotdot/src/js/jquery.dotdotdot.min.js', 'src/script/conf_dev.js', 'src/script/helpers.js', 'src/script/main.js'])
       .pipe(changed('dist/', {
         extension: '.js'
       }))
@@ -72,12 +72,13 @@ gulp.task('uglify_myjs', function () {
       .pipe(gulp.dest('src/script/'))
 });
 gulp.task('concat_js_production', function () {
-  return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/packery/dist/packery.pkgd.min.js', 'node_modules/swiper/dist/js/swiper.jquery.min.js', 'node_modules/jquery.dotdotdot/src/js/jquery.dotdotdot.min.js', 'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js', 'node_modules/video.js/dist/video.min.js', 'src/script/my.js'])
+  return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/packery/dist/packery.pkgd.min.js', 'node_modules/swiper/dist/js/swiper.jquery.min.js', 'node_modules/jquery.dotdotdot/src/js/jquery.dotdotdot.min.js','src/script/my.js'])
       .pipe(concat('all.js'))
       .pipe(gulp.dest('dist/'))
+      .pipe(uglify())
 });
 gulp.task('concat_css_dev', function () {
-  return gulp.src(['node_modules/normalize.css/normalize.css', 'node_modules/swiper/dist/css/swiper.min.css', 'node_modules/video.js/dist/video-js.min.css', 'node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css', 'src/stylesheet/main.css'])
+  return gulp.src(['node_modules/normalize.css/normalize.css', 'node_modules/swiper/dist/css/swiper.min.css', 'src/stylesheet/main.css'])
       .pipe(changed('dist/', {
         extension: '.css'
       }))
@@ -99,7 +100,7 @@ gulp.task('concat_css_dev', function () {
       }));
 });
 gulp.task('concat_css_production', function () {
-  return gulp.src(['node_modules/normalize.css/normalize.css', 'node_modules/swiper/dist/css/swiper.min.css', 'node_modules/video.js/dist/video-js.min.css', 'node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css', 'src/stylesheet/main.css'])
+  return gulp.src(['node_modules/normalize.css/normalize.css', 'node_modules/swiper/dist/css/swiper.min.css', 'src/stylesheet/main.css'])
       .pipe(changed('dist/', {
         extension: '.css'
       }))
@@ -108,7 +109,7 @@ gulp.task('concat_css_production', function () {
         compatibility: 'ie8'
       }))
       .pipe(autoprefixer({
-        browsers: ['IE > 7', 'iOS > 7', 'Firefox > 20', '> 5%'],
+        browsers: ['IE > 8', 'iOS > 7', 'Firefox > 20', '> 5%'],
         cascade: false
       }))
       // .pipe(rev())
@@ -122,7 +123,7 @@ gulp.task('clean_my_css', function () {
         keepBreaks: true
       }))
       .pipe(autoprefixer({
-        browsers: ['IE > 7', 'iOS > 7', 'Firefox > 20', '> 5%'],
+        browsers: ['IE > 8', 'iOS > 7', 'Firefox > 20', '> 5%'],
         cascade: false
       }))
       .pipe(gulp.dest('dist/'));

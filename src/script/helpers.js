@@ -188,17 +188,21 @@ window.Comp = {
   'packery': {
     init: function ($container, config) {
       //console.log('卡片初始化');
+      var calc_gutter = 13.33333;
       if (config && config.col) {
         //console.log('每行' + config.col + '个卡片');
-        //var grid_width = ($container.width() - (config.col - 1) * 10) / config.col;
-        //$container.find('.grid-item').each(function (inx, el) {
-        //  $(el).css('width', grid_width + 'px');
-        //});
+        var grid_width = ($container.width() - (config.col - 1) * 10) / config.col;
+        calc_gutter = 10;
+        //console.log('grid_width: ', grid_width);
+        $container.find('.grid-item').each(function (inx, el) {
+          $(el).css('width', grid_width + 'px');
+        });
       }
       $container.packery({
         initLayout: false,
         itemSelector: '.grid-item',
-        gutter: 13.3333,
+        //gutter: 13.3333,
+        gutter: calc_gutter,
         stamp: ".packery-stamp",
         transitionDuration: '0.2s'
       });
@@ -217,7 +221,7 @@ window.Comp = {
   'video_player': {
     init: function ($container) {
       //console.log('视频播放器初始化');
-      videojs.options.flash.swf = "./video-js.swf";
+      videojs.options.flash.swf = "http://webcdn.thecover.cn/web/20160622/video-js.swf";
       var video = $container.find('video').get(0);
       return this.bindEvents(videojs(video, {
         inactivityTimeout: 600
@@ -228,11 +232,8 @@ window.Comp = {
       }));
     },
     'bindEvents': function (player) {
-      //console.log(player.userActive());
-      //console.log(player.userActive);
       setTimeout(function () {
         player.userActive(true);
-        //console.log(player.userActive());
       }, 1500);
     }
   },
@@ -334,29 +335,24 @@ window.Comp = {
         $btn.html('<span>加载中 </span><em class="blink-0 blink">。</em><em class="blink-1 blink">。</em><em class="blink-2 blink">。</em>').addClass('frozen');
         Helper.$body.addClass('loading-more-cards');
         self.fetchMoreCard(config).done(function (data, textStatus, jqXHR) {
-          //console.log('加载成功!');
           Helper.$body.removeClass('loading-more-cards');
           $btn.html('<span>加载更多</span>').removeClass('frozen');
           return self.reRender(data, $('.packery-container'), $btn);
         }).fail(function (jqXHR, textStatus, errorThrown) {
-          //console.log('XHR对象: ', jqXHR.toString(), 'textStatus: ', textStatus);
         });
       });
     },
     'fetchMoreCard': function (config) {
       var payload = $('.packery-container').data('params');
-      //console.log('fetchMoreCard() payload: ', payload);
       return Helper.getHtml(config.API, payload);
     },
     'reRender': function (data, $container, $btn) {
-      //console.log('scroll_and_load.reRender()');
       var $html = $(data);
       $container.append($html).packery('appended', $html); //插件很挑剔,需要jQuery把HTML转换一下
       var $data_div = $container.find('#card_params');
       $container.data('params', $data_div.data('params'));
       $data_div.removeAttr('id');
       if($container.data('params').lastid == '-1') {
-        //console.log('last ID: ', -1);
         $('#footer').removeClass('hidden');
         Helper.$window.off('scroll.load_more');
         return $btn.html('<span>没有更多了~ </span>').removeClass('hidden').addClass('frozen').off('click');
@@ -366,7 +362,6 @@ window.Comp = {
   //页面悬浮物体
   'float_widgets': {
     init: function ($container) {
-      //console.log('页面悬浮物体初始化');
       var $btn = $container.find('#btn_back_to_top_container').css({
         'bottom': ($('#footer').height() + 55 * 2) + 'px'
       });
@@ -429,7 +424,6 @@ window.Comp = {
   //覆盖层
   'fullscreen_cover_layer': {
     init: function ($body) {
-      //console.log('覆盖层初始化');
       this.bindEvents($body);
     },
     'bindEvents': function ($container) {
@@ -474,7 +468,6 @@ window.Comp = {
   // fixedHeight
   'fixedHeight': {
     init: function () {
-      // console.log('fixedHeight init()')
       Helper.$body.height(Helper.wH - 82);
     }
   }
